@@ -1,0 +1,39 @@
+# ===== Java / Maven =====
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+*.log
+
+# ===== Node / frontend =====
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+coverage/
+
+# ===== Env / secrets =====
+.env
+.env.*
+!.env.example
+
+# ===== IDE / OS =====
+.idea/
+*.iml
+.vscode/
+.DS_Store
+*.swp
+*.tsbuildinfo
+
+# ===== Language server / build tooling =====
+.metals/
+.bloop/
+.scala-build/
+.github/modernize/
+
+# ===== Build / misc =====
+*.tmp
+*.pid
+HELP.md

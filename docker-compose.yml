@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: taskflow-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-taskflow}
+      POSTGRES_USER: ${POSTGRES_USER:-taskflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-taskflow}
+    ports:
+      - "5432:5432"
+    volumes:
+      - taskflow_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-taskflow}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: taskflow-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-taskflow}
+      DB_USERNAME: ${POSTGRES_USER:-taskflow}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-taskflow}
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production-this-is-a-demo-secret-key-256bits!!}
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./frontend
+    container_name: taskflow-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  taskflow_pgdata:

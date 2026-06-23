@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: taskflow
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/taskflow}
+    username: ${DB_USERNAME:taskflow}
+    password: ${DB_PASSWORD:taskflow}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+server:
+  port: ${SERVER_PORT:8080}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+taskflow:
+  jwt:
+    secret: ${JWT_SECRET:change-me-in-production-this-is-a-demo-secret-key-256bits!!}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:1440}
+
+logging:
+  level:
+    org.springframework.web.socket: INFO
