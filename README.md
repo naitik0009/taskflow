@@ -2,7 +2,7 @@
 
 > A real-time, collaborative Kanban board — drag a card and watch it move on everyone else's screen instantly.
 
-[![CI](https://github.com/your-org/taskflow/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/taskflow/actions/workflows/ci.yml)
+[![CI](https://github.com/naitik0009/taskflow/actions/workflows/ci.yml/badge.svg)](https://github.com/naitik0009/taskflow/actions/workflows/ci.yml)
 ![Java](https://img.shields.io/badge/Java-21-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3-brightgreen)
 ![React](https://img.shields.io/badge/React-18-61dafb)
@@ -108,8 +108,6 @@ the broadcast and reconcile their cache — that is the live-sync loop.
 ---
 
 ## Screenshots
-
-> Add images to `docs/screenshots/` and they will render here.
 
 | Boards | Board view |
 |--------|------------|
